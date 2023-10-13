@@ -1,6 +1,6 @@
 const uuid = require('uuid');
 const path = require('path');
-const {Product, ProductInfo} = require('../models/models');
+const {Product, ProductInfo, Brand} = require('../models/models');
 const ApiError = require('../error/ApiError');
 
 class ProductController {
@@ -64,6 +64,13 @@ class ProductController {
             },
         )
         return res.json(product);
+    }
+
+    async delete(req, res){
+        const {id} = req.body;
+        const productToDelete = await Product.destroy({ where: {id: id},});
+
+        return res.json({Deleted: productToDelete});
     }
 }
 

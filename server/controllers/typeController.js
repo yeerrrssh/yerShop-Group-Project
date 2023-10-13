@@ -1,4 +1,4 @@
-const {Type} = require('../models/models');
+const {Type, Brand} = require('../models/models');
 const ApiError = require('../error/ApiError');
 class TypeController {
     async create(req, res) {
@@ -10,6 +10,13 @@ class TypeController {
     async getAll(req, res) {
         const types = await Type.findAll();
         return res.json(types);
+    }
+
+    async delete(req, res){
+        const {id} = req.body;
+        const typeToDelete = await Type.destroy({ where: {id: id},});
+
+        return res.json({Deleted: typeToDelete});
     }
 }
 
