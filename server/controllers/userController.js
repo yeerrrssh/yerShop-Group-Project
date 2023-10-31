@@ -21,7 +21,7 @@ class UserController {
         const {id} = req.body;
         const userToDelete = await User.destroy({ where: {id: id},});
 
-        return res.json({Deleted: userToDelete});
+        return res.json({Deleted: id});
     }
 }
 

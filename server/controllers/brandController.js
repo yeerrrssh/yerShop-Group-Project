@@ -16,7 +16,7 @@ class BrandController {
         const {id} = req.body;
         const brandToDelete = await Brand.destroy({ where: {id: id},});
 
-        return res.json({Deleted: brandToDelete});
+        return res.json({Deleted: id});
     }
 }
 

@@ -70,7 +70,7 @@ class ProductController {
         const {id} = req.body;
         const productToDelete = await Product.destroy({ where: {id: id},});
 
-        return res.json({Deleted: productToDelete});
+        return res.json({Deleted: id});
     }
 }
 
